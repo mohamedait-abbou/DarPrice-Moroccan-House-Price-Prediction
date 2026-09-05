@@ -13,4 +13,7 @@ models/*.joblib
 lessons/
 expliction1.txt
 
+# AI session memory (works locally, not for public repo)
+AGENTS.md
+
 .DS_Store
