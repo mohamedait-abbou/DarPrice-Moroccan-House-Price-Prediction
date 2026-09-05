@@ -47,7 +47,7 @@ Response:
 
 ```json
 {
-  "predicted_price_MAD": 1513162
+  "predicted_price_MAD": 1392269
 }
 ```
 
@@ -59,15 +59,25 @@ Interactive API docs are available at **http://localhost:8000/docs** (auto-gener
 
 The model was trained on **7,014 cleaned residential listings** across 14 Moroccan cities.
 
-| Model | MAE | R² |
-|---|---|---|
-| Baseline (always predicts the mean) | ~1.7M MAD | 0.00 |
-| Linear Regression | 766,054 MAD | 0.866 |
-| **Random Forest (final model)** | **~585,105 MAD** | **0.902** |
+The pipeline **log-transforms the price** (it is heavily right-skewed), reports **MAE, RMSE and R²** on a held-out test set, and uses **5-fold cross-validation** plus **hyperparameter tuning** for honest, reproducible results.
 
-- **R² = 0.902** — the model explains ~90% of what drives house prices.
-- **Top feature: area (m²) ≈ 86% of importance**, followed by property type (villa), age, and city.
-- **Price range in dataset:** 172k – 16M MAD (median ~2.27M MAD).
+| Model | MAE (MAD) | RMSE (MAD) | R² |
+|---|---|---|---|
+| Linear Regression | 766,054 | — | 0.866 |
+| Tuned Random Forest | 581,773 | 945,604 | 0.890 |
+| **Tuned XGBoost (final model)** | **567,307** | **896,779** | **0.901** |
+
+Cross-validated comparison (log-space MAE, lower is better):
+
+| Model | CV MAE |
+|---|---|
+| Linear Regression | 0.237 |
+| Random Forest | 0.189 |
+| **XGBoost** | **0.184** |
+
+- **R² ≈ 0.90** — the model explains ~90% of what drives house prices.
+- The **log-transform** makes the model fair across the full price range (172k–16M MAD), instead of over-prioritizing cheap houses.
+- **Top feature: area (m²)** dominates importance, followed by property type (villa), age, and city.
 
 ---
 
@@ -82,12 +92,17 @@ Raw CSVs
 Clean dataset (7,014 rows)
    │  train.py
    ▼
+Log-transform price (fixes right skew)
+   ▼
 Pipeline:
    ColumnTransformer
       ├── Numeric ──▶ SimpleImputer(median) → StandardScaler
       └── Categorical ──▶ SimpleImputer → OneHotEncoder
    ▼
-RandomForestRegressor (100 trees)
+XGBoost (gradient boosting, hyperparameter-tuned)
+   │
+   ▼
+Predict in log-space → expm1 back to MAD
    │
    ▼
 app/main.py (FastAPI)  ──▶  POST /predict
@@ -138,7 +153,7 @@ pip install -r requirements.txt
 # 2. Prepare the data (raw → clean CSV)
 python src/prep_data.py
 
-# 3. Train the model (prints MAE / R²)
+# 3. Train the model (prints CV + held-out MAE / RMSE / R²)
 python src/train.py
 
 # 4. Serve predictions
@@ -155,7 +170,7 @@ uvicorn app.main:app --reload
 |---|---|
 | Language | Python |
 | Data | pandas, numpy |
-| Machine Learning | scikit-learn (Pipeline, ColumnTransformer, RandomForest, LinearRegression) |
+| Machine Learning | scikit-learn (Pipeline, ColumnTransformer), **XGBoost**, RandomForest, LinearRegression |
 | Model Serving | FastAPI, uvicorn, pydantic |
 | Serialization | joblib |
 
@@ -163,8 +178,9 @@ uvicorn app.main:app --reload
 
 ## Roadmap
 
-- [ ] Hyperparameter tuning (GridSearchCV)
-- [ ] Try XGBoost / LightGBM for accuracy
+- [x] Log-transform the target (fixes price skew)
+- [x] Add RMSE + 5-fold cross-validation
+- [x] Add XGBoost + hyperparameter tuning
 - [ ] Streamlit web UI
 - [ ] Docker containerization
 - [ ] Deploy to cloud (Render / Railway)

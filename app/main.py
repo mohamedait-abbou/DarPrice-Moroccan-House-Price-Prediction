@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+import numpy as np
 import pandas as pd
 from pathlib import Path
 
@@ -31,5 +32,6 @@ def home():
 @app.post("/predict")
 def predict(house: House):
     df = pd.DataFrame([house.model_dump()])
-    price = model.predict(df)[0]
+    log_price = model.predict(df)[0]
+    price = float(np.expm1(log_price))
     return {"predicted_price_MAD": round(price)}
