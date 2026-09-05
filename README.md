@@ -15,7 +15,7 @@ from city, area, rooms, property type, and other features — served through a F
 
 DarPrice is a complete ML pipeline that starts from **two raw scraped datasets (~120k listings)**, cleans and merges them into a **single 7,014-row dataset**, trains a **Random Forest** regression model, and exposes it as a **FastAPI service** that returns a predicted price from a simple JSON request.
 
-Beyond the model, the repo doubles as a **learning resource**: a `lessons/` folder breaks down every line of the project into a step-by-step course, so the entire pipeline is readable, reproducible, and replicable for new projects.
+The entire pipeline is designed to be **readable, reproducible, and replicable** for new projects.
 
 ---
 
@@ -117,15 +117,6 @@ DarPrice/
 ├── src/
 │   ├── prep_data.py             # merge 2 sources + cleaning + outliers
 │   └── train.py                 # train, evaluate, save the model
-├── lessons/                     # step-by-step ML course built on this repo
-│   ├── 00_START_HERE.md
-│   ├── 01_python_basics.md
-│   ├── 02_pandas_explained.md
-│   ├── 03_prep_data_line_by_line.md
-│   ├── 04_sklearn_and_training.md
-│   ├── 05_fastapi_explained.md
-│   ├── 06_edit_practice.md
-│   └── 07_build_your_next_project.md
 ├── test_code.ipynb              # exploratory notebook
 ├── requirements.txt
 └── README.md

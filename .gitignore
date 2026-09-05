@@ -9,4 +9,8 @@ data/processed/
 
 models/*.joblib
 
+# personal learning material (not for public repo)
+lessons/
+expliction1.txt
+
 .DS_Store
