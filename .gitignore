@@ -1,13 +1,33 @@
 venv/
+.venv/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
 
 data/raw/*.zip
 data/raw/*.csv
-data/processed/
 
-models/*.joblib
+# Keep the cleaned dataset so a fresh clone can train immediately.
+data/processed/*
+!data/processed/houses_combined.csv
+
+# Keep the trained model + metadata so a fresh clone can serve immediately.
+models/*
+!models/darprice_model.joblib
+!models/metadata.json
+
+# Keep training metrics and error reports for transparency.
+!metrics.json
+!reports/
+!reports/**
+
+.env
+.streamlit/secrets.toml
 
 # personal learning material (not for public repo)
 lessons/

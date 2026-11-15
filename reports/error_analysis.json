@@ -1,0 +1,451 @@
+{
+  "overall": {
+    "mae_MAD": 567943.8658900568,
+    "median_abs_error_MAD": 334541.62499999977,
+    "rmse_MAD": 902824.1458804787,
+    "mape_pct": 18.40257420974183,
+    "within_20pct": 0.6037063435495367,
+    "within_50pct": 0.9693513898788311
+  },
+  "error_quantiles_MAD": {
+    "0.5": 334541.62499999977,
+    "0.75": 675441.8749999991,
+    "0.9": 1393370.749999999,
+    "0.95": 2029495.0000000007,
+    "0.99": 3510694.5399999875
+  },
+  "by_city": [
+    {
+      "city": "kenitra",
+      "n": 48,
+      "mae_MAD": 282613.5455729168,
+      "median_abs_error_MAD": 258429.03125000058,
+      "mape_pct": 18.086445864986537,
+      "mean_actual_MAD": 1993813.2708333333,
+      "mean_predicted_MAD": 2077978.625
+    },
+    {
+      "city": "oujda",
+      "n": 59,
+      "mae_MAD": 446913.67796610104,
+      "median_abs_error_MAD": 261524.24999999907,
+      "mape_pct": 17.612477963025103,
+      "mean_actual_MAD": 2678678.508474576,
+      "mean_predicted_MAD": 2750851.75
+    },
+    {
+      "city": "fes",
+      "n": 133,
+      "mae_MAD": 455572.4755639096,
+      "median_abs_error_MAD": 231585.75000000023,
+      "mape_pct": 16.744820957827333,
+      "mean_actual_MAD": 2805811.6090225563,
+      "mean_predicted_MAD": 2709259.75
+    },
+    {
+      "city": "tetouan",
+      "n": 37,
+      "mae_MAD": 474916.8547297294,
+      "median_abs_error_MAD": 364227.99999999814,
+      "mape_pct": 19.37230534027026,
+      "mean_actual_MAD": 2866824.5135135134,
+      "mean_predicted_MAD": 2871119.25
+    },
+    {
+      "city": "agadir",
+      "n": 109,
+      "mae_MAD": 488748.6780389912,
+      "median_abs_error_MAD": 298728.99999999953,
+      "mape_pct": 18.209193927123703,
+      "mean_actual_MAD": 2954707.0733944955,
+      "mean_predicted_MAD": 2756191.75
+    },
+    {
+      "city": "meknes",
+      "n": 91,
+      "mae_MAD": 540721.6953983518,
+      "median_abs_error_MAD": 338642.00000000186,
+      "mape_pct": 19.117123832990835,
+      "mean_actual_MAD": 3069269.0769230775,
+      "mean_predicted_MAD": 3088678.25
+    },
+    {
+      "city": "sale",
+      "n": 35,
+      "mae_MAD": 550786.9821428563,
+      "median_abs_error_MAD": 360222.3749999986,
+      "mape_pct": 19.828853559432538,
+      "mean_actual_MAD": 2991820.5999999996,
+      "mean_predicted_MAD": 2982827.25
+    },
+    {
+      "city": "casablanca",
+      "n": 354,
+      "mae_MAD": 582910.5033545197,
+      "median_abs_error_MAD": 377355.6249999951,
+      "mape_pct": 17.96993219424033,
+      "mean_actual_MAD": 3360315.5169491526,
+      "mean_predicted_MAD": 3253868.0
+    },
+    {
+      "city": "tanger",
+      "n": 149,
+      "mae_MAD": 611054.6021392618,
+      "median_abs_error_MAD": 339249.0000000112,
+      "mape_pct": 19.52555412844371,
+      "mean_actual_MAD": 3176235.5838926174,
+      "mean_predicted_MAD": 3246224.0
+    },
+    {
+      "city": "rabat",
+      "n": 245,
+      "mae_MAD": 643111.2982142853,
+      "median_abs_error_MAD": 398417.9999999963,
+      "mape_pct": 18.679285121442938,
+      "mean_actual_MAD": 3490459.5265306123,
+      "mean_predicted_MAD": 3329474.25
+    },
+    {
+      "city": "marrakech",
+      "n": 143,
+      "mae_MAD": 713372.5681818182,
+      "median_abs_error_MAD": 305867.00000000047,
+      "mape_pct": 18.89601980319874,
+      "mean_actual_MAD": 3734606.8531468534,
+      "mean_predicted_MAD": 3409869.75
+    }
+  ],
+  "by_property_type": [
+    {
+      "property_type": "studio",
+      "n": 121,
+      "mae_MAD": 82259.79803719006,
+      "median_abs_error_MAD": 64456.75000000012,
+      "mape_pct": 17.324773346855,
+      "mean_actual_MAD": 483030.20661157026,
+      "mean_predicted_MAD": 481946.9375
+    },
+    {
+      "property_type": "maison",
+      "n": 213,
+      "mae_MAD": 334274.81748826284,
+      "median_abs_error_MAD": 292511.9999999977,
+      "mape_pct": 14.497357006129329,
+      "mean_actual_MAD": 2377112.6666666665,
+      "mean_predicted_MAD": 2362782.25
+    },
+    {
+      "property_type": "appartement",
+      "n": 622,
+      "mae_MAD": 343486.0699859325,
+      "median_abs_error_MAD": 289567.3749999992,
+      "mape_pct": 20.241889095894805,
+      "mean_actual_MAD": 1803679.4758842443,
+      "mean_predicted_MAD": 1794426.5
+    },
+    {
+      "property_type": "duplex",
+      "n": 63,
+      "mae_MAD": 369906.9384920632,
+      "median_abs_error_MAD": 302739.50000000023,
+      "mape_pct": 15.020639985958645,
+      "mean_actual_MAD": 2410722.8571428573,
+      "mean_predicted_MAD": 2266445.75
+    },
+    {
+      "property_type": "villa",
+      "n": 357,
+      "mae_MAD": 1215998.2499999998,
+      "median_abs_error_MAD": 1036178.2499999986,
+      "mape_pct": 18.45860916353366,
+      "mean_actual_MAD": 6806295.380952381,
+      "mean_predicted_MAD": 6509252.0
+    },
+    {
+      "property_type": "riad",
+      "n": 27,
+      "mae_MAD": 1652126.8240740725,
+      "median_abs_error_MAD": 1430592.9999999832,
+      "mape_pct": 18.818451512937237,
+      "mean_actual_MAD": 8248506.62962963,
+      "mean_predicted_MAD": 7743645.0
+    }
+  ],
+  "worst_predictions": [
+    {
+      "city": "marrakech",
+      "neighborhood": "route de fes",
+      "property_type": "villa",
+      "area": 511,
+      "rooms": 3,
+      "actual_price_MAD": 14646990.0,
+      "predicted_price_MAD": 9390759.0,
+      "abs_error_MAD": 5256231.0,
+      "pct_error": 35.89
+    },
+    {
+      "city": "rabat",
+      "neighborhood": "kamra",
+      "property_type": "riad",
+      "area": 430,
+      "rooms": 7,
+      "actual_price_MAD": 13087533.0,
+      "predicted_price_MAD": 7887453.5,
+      "abs_error_MAD": 5200079.5,
+      "pct_error": 39.73
+    },
+    {
+      "city": "marrakech",
+      "neighborhood": "menara",
+      "property_type": "riad",
+      "area": 447,
+      "rooms": 4,
+      "actual_price_MAD": 14613836.0,
+      "predicted_price_MAD": 10123278.0,
+      "abs_error_MAD": 4490558.0,
+      "pct_error": 30.73
+    },
+    {
+      "city": "marrakech",
+      "neighborhood": "targa",
+      "property_type": "villa",
+      "area": 493,
+      "rooms": 5,
+      "actual_price_MAD": 13790717.0,
+      "predicted_price_MAD": 9483042.0,
+      "abs_error_MAD": 4307675.0,
+      "pct_error": 31.24
+    },
+    {
+      "city": "marrakech",
+      "neighborhood": "daoudiat",
+      "property_type": "villa",
+      "area": 512,
+      "rooms": 5,
+      "actual_price_MAD": 13477872.0,
+      "predicted_price_MAD": 9381056.0,
+      "abs_error_MAD": 4096816.0,
+      "pct_error": 30.4
+    },
+    {
+      "city": "agadir",
+      "neighborhood": "tikiouine",
+      "property_type": "villa",
+      "area": 527,
+      "rooms": 4,
+      "actual_price_MAD": 12538215.0,
+      "predicted_price_MAD": 8455097.0,
+      "abs_error_MAD": 4083118.0,
+      "pct_error": 32.57
+    },
+    {
+      "city": "rabat",
+      "neighborhood": "medina",
+      "property_type": "villa",
+      "area": 533,
+      "rooms": 3,
+      "actual_price_MAD": 12881292.0,
+      "predicted_price_MAD": 8865862.0,
+      "abs_error_MAD": 4015430.0,
+      "pct_error": 31.17
+    },
+    {
+      "city": "marrakech",
+      "neighborhood": "menara",
+      "property_type": "villa",
+      "area": 481,
+      "rooms": 6,
+      "actual_price_MAD": 13323562.0,
+      "predicted_price_MAD": 9342558.0,
+      "abs_error_MAD": 3981004.0,
+      "pct_error": 29.88
+    },
+    {
+      "city": "tanger",
+      "neighborhood": "centre ville",
+      "property_type": "villa",
+      "area": 578,
+      "rooms": 5,
+      "actual_price_MAD": 13464433.0,
+      "predicted_price_MAD": 9532277.0,
+      "abs_error_MAD": 3932156.0,
+      "pct_error": 29.2
+    },
+    {
+      "city": "marrakech",
+      "neighborhood": "gueliz",
+      "property_type": "villa",
+      "area": 490,
+      "rooms": 4,
+      "actual_price_MAD": 12824030.0,
+      "predicted_price_MAD": 9078256.0,
+      "abs_error_MAD": 3745774.0,
+      "pct_error": 29.21
+    },
+    {
+      "city": "marrakech",
+      "neighborhood": "daoudiat",
+      "property_type": "villa",
+      "area": 504,
+      "rooms": 6,
+      "actual_price_MAD": 13055224.0,
+      "predicted_price_MAD": 9312616.0,
+      "abs_error_MAD": 3742608.0,
+      "pct_error": 28.67
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "sidi maarouf",
+      "property_type": "riad",
+      "area": 431,
+      "rooms": 5,
+      "actual_price_MAD": 13716161.0,
+      "predicted_price_MAD": 10047909.0,
+      "abs_error_MAD": 3668252.0,
+      "pct_error": 26.74
+    },
+    {
+      "city": "agadir",
+      "neighborhood": "tikiouine",
+      "property_type": "villa",
+      "area": 518,
+      "rooms": 3,
+      "actual_price_MAD": 12056741.0,
+      "predicted_price_MAD": 8412846.0,
+      "abs_error_MAD": 3643895.0,
+      "pct_error": 30.22
+    },
+    {
+      "city": "tanger",
+      "neighborhood": "medina",
+      "property_type": "villa",
+      "area": 597,
+      "rooms": 6,
+      "actual_price_MAD": 6860410.0,
+      "predicted_price_MAD": 10485265.0,
+      "abs_error_MAD": 3624855.0,
+      "pct_error": 52.84
+    },
+    {
+      "city": "rabat",
+      "neighborhood": "agdal",
+      "property_type": "villa",
+      "area": 582,
+      "rooms": 7,
+      "actual_price_MAD": 13628997.0,
+      "predicted_price_MAD": 10114188.0,
+      "abs_error_MAD": 3514809.0,
+      "pct_error": 25.79
+    },
+    {
+      "city": "tanger",
+      "neighborhood": "gzenaya",
+      "property_type": "villa",
+      "area": 544,
+      "rooms": 4,
+      "actual_price_MAD": 6287734.0,
+      "predicted_price_MAD": 9596820.0,
+      "abs_error_MAD": 3309086.0,
+      "pct_error": 52.63
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "gauthier",
+      "property_type": "villa",
+      "area": 444,
+      "rooms": 5,
+      "actual_price_MAD": 11821629.0,
+      "predicted_price_MAD": 8528794.0,
+      "abs_error_MAD": 3292835.0,
+      "pct_error": 27.85
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "hay mohammadi",
+      "property_type": "villa",
+      "area": 584,
+      "rooms": 5,
+      "actual_price_MAD": 8524109.0,
+      "predicted_price_MAD": 11738819.0,
+      "abs_error_MAD": 3214710.0,
+      "pct_error": 37.71
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "hay mohammadi",
+      "property_type": "villa",
+      "area": 588,
+      "rooms": 4,
+      "actual_price_MAD": 14883484.0,
+      "predicted_price_MAD": 11674156.0,
+      "abs_error_MAD": 3209328.0,
+      "pct_error": 21.56
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "maarif",
+      "property_type": "villa",
+      "area": 409,
+      "rooms": 4,
+      "actual_price_MAD": 10986995.0,
+      "predicted_price_MAD": 7851693.0,
+      "abs_error_MAD": 3135302.5,
+      "pct_error": 28.54
+    },
+    {
+      "city": "fes",
+      "neighborhood": "agdal",
+      "property_type": "villa",
+      "area": 584,
+      "rooms": 3,
+      "actual_price_MAD": 12175243.0,
+      "predicted_price_MAD": 9040156.0,
+      "abs_error_MAD": 3135087.0,
+      "pct_error": 25.75
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "hay mohammadi",
+      "property_type": "villa",
+      "area": 540,
+      "rooms": 7,
+      "actual_price_MAD": 13844238.0,
+      "predicted_price_MAD": 10758532.0,
+      "abs_error_MAD": 3085706.0,
+      "pct_error": 22.29
+    },
+    {
+      "city": "rabat",
+      "neighborhood": "agdal",
+      "property_type": "villa",
+      "area": 500,
+      "rooms": 5,
+      "actual_price_MAD": 11479410.0,
+      "predicted_price_MAD": 8409533.0,
+      "abs_error_MAD": 3069877.0,
+      "pct_error": 26.74
+    },
+    {
+      "city": "casablanca",
+      "neighborhood": "california",
+      "property_type": "villa",
+      "area": 530,
+      "rooms": 5,
+      "actual_price_MAD": 12672197.0,
+      "predicted_price_MAD": 9605995.0,
+      "abs_error_MAD": 3066202.0,
+      "pct_error": 24.2
+    },
+    {
+      "city": "rabat",
+      "neighborhood": "ocean",
+      "property_type": "villa",
+      "area": 418,
+      "rooms": 8,
+      "actual_price_MAD": 10418776.0,
+      "predicted_price_MAD": 7463718.0,
+      "abs_error_MAD": 2955058.0,
+      "pct_error": 28.36
+    }
+  ]
+}

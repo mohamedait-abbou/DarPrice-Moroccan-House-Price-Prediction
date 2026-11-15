@@ -1,0 +1,333 @@
+{
+  "model_name": "XGBoost",
+  "target": "log1p(price)",
+  "currency": "MAD",
+  "input_features": [
+    "city",
+    "neighborhood",
+    "property_type",
+    "condition",
+    "age",
+    "area",
+    "rooms",
+    "bathrooms",
+    "floor",
+    "amenities_count"
+  ],
+  "categorical_features": [
+    "city",
+    "neighborhood",
+    "property_type",
+    "condition"
+  ],
+  "numeric_features": [
+    "age",
+    "area",
+    "rooms",
+    "bathrooms",
+    "floor",
+    "amenities_count"
+  ],
+  "categorical_values": {
+    "city": [
+      "agadir",
+      "casablanca",
+      "dar bouazza",
+      "fes",
+      "kenitra",
+      "marrakech",
+      "meknes",
+      "mohammadia",
+      "oujda",
+      "rabat",
+      "sale",
+      "tanger",
+      "tetouan"
+    ],
+    "neighborhood": [
+      "2 mars",
+      "agdal",
+      "ain diab",
+      "al amal",
+      "al azhar",
+      "al qods",
+      "almoustakbal",
+      "anfa",
+      "angad",
+      "anza",
+      "atlas",
+      "autre",
+      "aviation",
+      "bassatine",
+      "belvedere",
+      "ben sergao",
+      "bensouda",
+      "bettana",
+      "boubana",
+      "boukhaled",
+      "boukhalef",
+      "bourgogne",
+      "bourgogne ouest",
+      "branes",
+      "california",
+      "californie",
+      "centre ville",
+      "cil",
+      "daoudiat",
+      "dar bouazza",
+      "farah essalam",
+      "florence",
+      "founty",
+      "gauthier",
+      "ghandi",
+      "gueliz",
+      "gzenaya",
+      "hamria",
+      "hassan",
+      "hay dakhla",
+      "hay essalam",
+      "hay hassani",
+      "hay mohammadi",
+      "hay rahma",
+      "hay riad",
+      "hay salam",
+      "hivernage",
+      "hssaine",
+      "ibn batouta",
+      "kamra",
+      "laayayda",
+      "lalla mimouna",
+      "lamrissa",
+      "lazaret",
+      "les hopitaux",
+      "les princesses",
+      "m'diq",
+      "maamoura",
+      "maarif",
+      "malabata",
+      "mamora",
+      "mandarona",
+      "mansour",
+      "marjane",
+      "martil",
+      "massira",
+      "medina",
+      "mellaliyine",
+      "menara",
+      "mesnana",
+      "msallah",
+      "narjiss",
+      "ocean",
+      "orangers",
+      "ouled oujih",
+      "palmeraie",
+      "palmier",
+      "racine",
+      "riad",
+      "riviera",
+      "rmilat",
+      "route ain chkef",
+      "route de fes",
+      "route immouzer",
+      "saada",
+      "saiss",
+      "saknia",
+      "samsa",
+      "sania",
+      "saniat rmel",
+      "secteur touristique",
+      "shoul",
+      "sidi maafa",
+      "sidi maarouf",
+      "sidi yahya",
+      "sidi youssef ben ali",
+      "sonaba",
+      "souissi",
+      "tabriquet",
+      "talborjt",
+      "targa",
+      "tikiouine",
+      "tilila",
+      "toulal",
+      "ville nouvelle",
+      "yacoub el mansour",
+      "zitoune",
+      "zouagha"
+    ],
+    "property_type": [
+      "appartement",
+      "duplex",
+      "maison",
+      "riad",
+      "studio",
+      "villa"
+    ],
+    "condition": [
+      "a renover",
+      "bon etat",
+      "excellent etat",
+      "neuf",
+      "tres bon etat"
+    ]
+  },
+  "numeric_ranges": {
+    "age": {
+      "min": 0.0,
+      "max": 40.0,
+      "median": 20.0
+    },
+    "area": {
+      "min": 25.0,
+      "max": 720.0,
+      "median": 175.0
+    },
+    "rooms": {
+      "min": 1.0,
+      "max": 10.0,
+      "median": 4.0
+    },
+    "bathrooms": {
+      "min": 1.0,
+      "max": 4.0,
+      "median": 2.0
+    },
+    "floor": {
+      "min": 0.0,
+      "max": 12.0,
+      "median": 1.0
+    },
+    "amenities_count": {
+      "min": 0.0,
+      "max": 8.0,
+      "median": 6.0
+    }
+  },
+  "derived_features": [
+    "area_per_room",
+    "rooms_plus_bath",
+    "amenities_per_100m2",
+    "is_new"
+  ],
+  "metrics": {
+    "mae": 567943.8658900568,
+    "rmse": 902824.1458804787,
+    "r2": 0.8998862221259711
+  },
+  "best_params": {},
+  "feature_importance_top20": [
+    {
+      "feature": "num__area",
+      "importance": 0.6104596257209778
+    },
+    {
+      "feature": "cat__property_type_villa",
+      "importance": 0.1110798567533493
+    },
+    {
+      "feature": "cat__property_type_riad",
+      "importance": 0.024494772776961327
+    },
+    {
+      "feature": "cat__property_type_maison",
+      "importance": 0.022067928686738014
+    },
+    {
+      "feature": "cat__property_type_appartement",
+      "importance": 0.017518552020192146
+    },
+    {
+      "feature": "cat__city_casablanca",
+      "importance": 0.011805581860244274
+    },
+    {
+      "feature": "cat__city_oujda",
+      "importance": 0.011512244120240211
+    },
+    {
+      "feature": "cat__city_marrakech",
+      "importance": 0.011206335388123989
+    },
+    {
+      "feature": "cat__city_rabat",
+      "importance": 0.00976442638784647
+    },
+    {
+      "feature": "cat__property_type_duplex",
+      "importance": 0.00961223617196083
+    },
+    {
+      "feature": "cat__city_meknes",
+      "importance": 0.00935759861022234
+    },
+    {
+      "feature": "num__bathrooms",
+      "importance": 0.009042934514582157
+    },
+    {
+      "feature": "cat__city_fes",
+      "importance": 0.00799056701362133
+    },
+    {
+      "feature": "cat__city_kenitra",
+      "importance": 0.007892492227256298
+    },
+    {
+      "feature": "cat__city_tetouan",
+      "importance": 0.007478215266019106
+    },
+    {
+      "feature": "num__rooms_plus_bath",
+      "importance": 0.007172323763370514
+    },
+    {
+      "feature": "cat__city_agadir",
+      "importance": 0.004737256094813347
+    },
+    {
+      "feature": "cat__neighborhood_saada",
+      "importance": 0.0034731049090623856
+    },
+    {
+      "feature": "cat__neighborhood_toulal",
+      "importance": 0.0033375476486980915
+    },
+    {
+      "feature": "cat__neighborhood_hay dakhla",
+      "importance": 0.0031023197807371616
+    }
+  ],
+  "dataset": "data/processed/houses_combined.csv",
+  "n_rows": 7014,
+  "n_train": 5611,
+  "n_test": 1403,
+  "test_size": 0.2,
+  "seed": 42,
+  "cv_folds": 5,
+  "trained_at_utc": "2026-10-30T20:49:26+00:00",
+  "versions": {
+    "python": "3.14.4",
+    "scikit-learn": "1.9.0",
+    "xgboost": "3.4.1",
+    "pandas": "3.0.5",
+    "numpy": "2.5.2"
+  },
+  "cv_mae_log": {
+    "LinearRegression": 0.20204109710721743,
+    "RandomForest": 0.1911377497501227,
+    "ExtraTrees": 0.19213737458022456,
+    "XGBoost": 0.18354962288694524
+  },
+  "test": {
+    "mae": 567943.8658900568,
+    "rmse": 902824.1458804787,
+    "r2": 0.8998862221259711
+  },
+  "error_analysis": {
+    "mae_MAD": 567943.8658900568,
+    "median_abs_error_MAD": 334541.62499999977,
+    "rmse_MAD": 902824.1458804787,
+    "mape_pct": 18.40257420974183,
+    "within_20pct": 0.6037063435495367,
+    "within_50pct": 0.9693513898788311
+  }
+}
