@@ -29,8 +29,9 @@ Most ML tutorials stop at a notebook with a nice score. DarPrice goes all the wa
 6. **Demo** — a friendly Streamlit UI.
 7. **Ship** — 33 tests, lint/format, Docker, CI, and a GHCR image workflow.
 
-> **New to the project?** Read [`docs/TUTORIAL.md`](docs/TUTORIAL.md) — a complete
-> build-it-yourself guide that explains every file and every design decision.
+> **New to the project?** Start with [`docs/MODEL_CARD.md`](docs/MODEL_CARD.md)
+> for how the model works, then read the code top-to-bottom: `src/prep_data.py`
+> → `src/train.py` → `app/main.py`.
 
 ---
 
@@ -315,8 +316,7 @@ DarPrice/
 │   └── metadata.json           # categories, ranges, metrics
 ├── reports/                    # error analysis + charts
 ├── docs/
-│   ├── TUTORIAL.md             # build-it-yourself guide
-│   └── MODEL_CARD.md
+│   ├── MODEL_CARD.md
 ├── .github/workflows/
 │   ├── ci.yml                  # lint + format + tests + docker build
 │   └── cd.yml                  # publish image to GHCR
@@ -400,8 +400,6 @@ app/main.py (FastAPI) ──▶ POST /predict ──▶ expm1 → MAD
 
 ## Documentation
 
-- [`docs/TUTORIAL.md`](docs/TUTORIAL.md) — build the whole project yourself,
-  with every file and concept explained.
 - [`docs/MODEL_CARD.md`](docs/MODEL_CARD.md) — intended use, limitations,
   ethics, and evaluation details.
 - [`data/README.md`](data/README.md) — data provenance, schema, and rebuild.

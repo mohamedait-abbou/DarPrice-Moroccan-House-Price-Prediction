@@ -40,7 +40,7 @@ make check      # exactly what CI runs
 - [ ] No raw data, secrets, or personal learning notes are committed.
 - [ ] If the model changes, `metrics.json`, `models/metadata.json`, and
       `reports/` are regenerated and committed.
-- [ ] If the API contract changes, the README and `docs/TUTORIAL.md` are updated.
+- [ ] If the API contract changes, the README is updated.
 
 ## Commit style
 
