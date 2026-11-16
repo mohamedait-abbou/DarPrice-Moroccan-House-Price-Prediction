@@ -1,4 +1,4 @@
-.PHONY: help install install-dev install-streamlit data train evaluate serve streamlit test lint format check docker-build docker-run clean
+.PHONY: help install install-dev install-streamlit data train evaluate serve streamlit test lint format check docker-build docker-run docker-build-ui docker-up docker-down clean
 
 PYTHON ?= python
 UVICORN ?= uvicorn
@@ -47,11 +47,20 @@ check:  ## Run everything CI runs
 	ruff format --check .
 	$(PYTHON) -m pytest --cov=app --cov=src --cov-report=term-missing
 
-docker-build:  ## Build the production Docker image
+docker-build:  ## Build the production API Docker image
 	docker build -t darprice:local .
 
-docker-run:  ## Run the production Docker image
+docker-run:  ## Run the production API Docker image
 	docker run --rm -p 8000:8000 darprice:local
+
+docker-build-ui:  ## Build the Streamlit UI Docker image
+	docker build -f Dockerfile.streamlit -t darprice-ui:local .
+
+docker-up:  ## Run API + Streamlit UI with docker compose
+	docker compose up --build
+
+docker-down:  ## Stop and remove the compose stack
+	docker compose down
 
 clean:  ## Remove caches and generated charts
 	rm -rf .pytest_cache .ruff_cache .coverage htmlcov

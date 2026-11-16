@@ -160,13 +160,16 @@ DarPrice/
 ├── .github/workflows/
 │   ├── ci.yml                  # lint + format + tests + docker build
 │   └── cd.yml                  # publish image to GHCR
-├── Dockerfile
-├── docker-compose.yml
+├── Dockerfile                  # API image
+├── Dockerfile.streamlit        # Streamlit UI image
+├── docker-compose.yml          # API + UI stack
+├── render.yaml                 # Render Blueprint (one-click deploy)
+├── .env.example                # env var template
 ├── Makefile
 ├── requirements.txt            # runtime + training
 ├── requirements-train.txt      # + plotting
 ├── requirements-dev.txt        # + tests, lint, pre-commit
-├── requirements-streamlit.txt  # + Streamlit demo
+├── requirements-streamlit.txt  # Streamlit UI client (streamlit + requests)
 ├── pyproject.toml              # ruff + pytest + coverage config
 └── README.md
 ```
@@ -733,10 +736,10 @@ Response:
 
 ## 11. Step 7 — Build a UI (`app/streamlit_app.py`)
 
-Install the optional dependencies:
+Install the API and UI dependencies (the UI is a thin HTTP client):
 
 ```bash
-pip install -r requirements-streamlit.txt
+pip install -r requirements-dev.txt -r requirements-streamlit.txt
 ```
 
 Start the API in one terminal:
@@ -802,18 +805,24 @@ Build and run:
 ```bash
 make docker-build
 make docker-run
-# or
+# or run the full stack (API + Streamlit UI)
 docker compose up --build
 ```
 
-The Dockerfile:
+`docker compose up --build` starts two services: the API on `:8000` and the
+Streamlit UI on `:8501` (it waits for the API healthcheck before starting).
+
+The API `Dockerfile`:
 
 1. Starts from `python:3.14-slim`.
-2. Installs only runtime dependencies.
+2. Installs only runtime dependencies (`xgboost-cpu`, so no CUDA/NVIDIA bloat).
 3. Copies `app/`, `src/`, `models/`, and `metrics.json`.
 4. Creates a non-root `appuser`.
 5. Adds a `HEALTHCHECK` that hits `/health`.
 6. Runs `uvicorn` on `0.0.0.0:8000`.
+
+`Dockerfile.streamlit` is a separate, smaller image that installs only
+`streamlit` + `requests` and serves the UI on `:8501`.
 
 Why copy `src/`? Because the pickled pipeline imports `src.features`. Without
 it, loading the model fails.
@@ -823,6 +832,10 @@ does not get root inside the container.
 
 Why `HEALTHCHECK`? Orchestrators (Docker, Kubernetes, Render) can restart an
 unhealthy container automatically.
+
+To deploy the API, the repo ships [`render.yaml`](../render.yaml), a Render
+Blueprint with `runtime: docker` and `healthCheckPath: /health`. Create a new
+Blueprint on Render, point it at the repo, and it builds the `Dockerfile`.
 
 ---
 

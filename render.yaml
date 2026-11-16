@@ -1,0 +1,15 @@
+# Render Blueprint — one-click deploy of the DarPrice API.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: darprice-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: DARP_PRICE_CORS_ORIGINS
+        value: "*"
+      - key: DARP_PRICE_LOG_LEVEL
+        value: INFO

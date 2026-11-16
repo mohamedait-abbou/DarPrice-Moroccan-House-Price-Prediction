@@ -26,6 +26,7 @@ make data       # rebuild the cleaned dataset from data/raw/
 make train      # retrain + tune + evaluate + regenerate reports
 make evaluate   # re-run error analysis for the saved model
 make serve      # FastAPI at http://localhost:8000/docs
+make docker-up  # API (:8000) + Streamlit UI (:8501) via docker compose
 make test       # pytest + coverage
 make lint       # ruff check
 make format     # ruff format

@@ -10,6 +10,8 @@ htmlcov/
 .git/
 .github/
 .gitignore
+.env
+.env.*
 AGENTS.md
 lessons/
 expliction1.txt
@@ -20,9 +22,9 @@ tests/
 docs/
 Dockerfile
 docker-compose.yml
+render.yaml
 Makefile
 .pre-commit-config.yaml
 requirements-dev.txt
 requirements-train.txt
-requirements-streamlit.txt
 .DS_Store

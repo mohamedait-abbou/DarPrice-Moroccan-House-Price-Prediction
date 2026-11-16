@@ -99,7 +99,7 @@ curl http://localhost:8000/health
 ### Streamlit UI
 
 ```bash
-pip install -r requirements-streamlit.txt
+pip install -r requirements-dev.txt -r requirements-streamlit.txt
 # terminal 1
 uvicorn app.main:app --reload
 # terminal 2
@@ -238,9 +238,20 @@ make check
 
 ### Docker
 
+Bring up the API **and** the Streamlit UI in one command:
+
 ```bash
 docker compose up --build
-# API on http://localhost:8000
+# API      -> http://localhost:8000/docs
+# UI       -> http://localhost:8501
+# API docs -> http://localhost:8000/docs
+```
+
+Build/run just the API image:
+
+```bash
+docker build -t darprice:local .
+docker run --rm -p 8000:8000 darprice:local
 ```
 
 Or use the published image:
@@ -250,7 +261,35 @@ docker pull ghcr.io/mohamedait-abbou/darprice:latest
 docker run --rm -p 8000:8000 ghcr.io/mohamedait-abbou/darprice:latest
 ```
 
-The image runs as a non-root user and has a `/health` healthcheck.
+Both images run as a non-root user and define healthchecks. The API image uses
+`xgboost-cpu`, so it does not pull the ~300 MB NVIDIA/CUDA runtime.
+
+### Deploy
+
+The repository includes [`render.yaml`](render.yaml), a [Render Blueprint](https://render.com/docs/blueprint-spec)
+that deploys the API as a Docker web service with `healthCheckPath: /health`.
+
+1. Push the repo to GitHub (already done).
+2. On Render: **New → Blueprint → select this repo**.
+3. Render builds the `Dockerfile` and exposes the API over HTTPS.
+
+Any Docker host (Fly.io, Railway, a VPS) works the same way:
+`docker build -t darprice . && docker run -p 8000:8000 darprice`.
+
+### Configuration
+
+Copy [`.env.example`](.env.example) to `.env` and adjust paths/origins. The API
+reads:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `DARP_PRICE_MODEL_PATH` | `models/darprice_model.joblib` | Trained pipeline |
+| `DARP_PRICE_METADATA_PATH` | `models/metadata.json` | Categories/ranges for UI |
+| `DARP_PRICE_METRICS_PATH` | `metrics.json` | Model metrics endpoint |
+| `DARP_PRICE_CORS_ORIGINS` | `*` | Allowed browser origins (comma-separated) |
+| `DARP_PRICE_LOG_LEVEL` | `INFO` | Logging level |
+| `DARP_PRICE_N_JOBS` | `2` | Parallelism during training |
+| `DARP_PRICE_API_URL` | `http://localhost:8000` | API base URL used by the UI |
 
 ---
 
@@ -281,8 +320,11 @@ DarPrice/
 ├── .github/workflows/
 │   ├── ci.yml                  # lint + format + tests + docker build
 │   └── cd.yml                  # publish image to GHCR
-├── Dockerfile
-├── docker-compose.yml
+├── Dockerfile                  # API image (xgboost-cpu, non-root, healthcheck)
+├── Dockerfile.streamlit        # Streamlit UI image
+├── docker-compose.yml          # API + UI stack
+├── render.yaml                 # Render Blueprint (one-click API deploy)
+├── .env.example                # Environment variable template
 ├── Makefile
 ├── requirements.txt
 ├── requirements-train.txt
@@ -334,7 +376,7 @@ app/main.py (FastAPI) ──▶ POST /predict ──▶ expm1 → MAD
 |---|---|
 | Language | Python 3.12+ (tested on 3.14) |
 | Data | pandas, numpy |
-| ML | scikit-learn (`Pipeline`, `ColumnTransformer`, CV, tuning), XGBoost |
+| ML | scikit-learn (`Pipeline`, `ColumnTransformer`, CV, tuning), XGBoost (`xgboost-cpu` build) |
 | Serving | FastAPI, uvicorn, pydantic v2 |
 | UI | Streamlit |
 | Serialization | joblib |
@@ -378,8 +420,10 @@ app/main.py (FastAPI) ──▶ POST /predict ──▶ expm1 → MAD
 - [x] Unit + API tests and CI (ruff + pytest + coverage)
 - [x] Docker containerization + GHCR publishing
 - [x] Streamlit web UI
+- [x] Docker Compose stack (API + UI)
 - [x] Input normalization at serve time
-- [ ] Cloud deployment (Render / Railway / Hugging Face Spaces)
+- [x] One-click deployment blueprint (`render.yaml`)
+- [ ] Live public deployment (needs a hosting account)
 - [ ] Prediction intervals
 - [ ] Live monitoring / drift detection
 - [ ] Temporal validation with `listing_date`
